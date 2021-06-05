@@ -1,0 +1,92 @@
+<div class="card">  
+    <div class="card-body">  
+      <form  (ngSubmit)="SubmitForm(registerForm)" #registerForm="ngForm"  >  
+        <div class="form-group">  
+          <label class="col-md-4">Title</label>  
+          <input type="text" ngModel name="Title" class="form-control" #Title="ngModel" required>  
+        </div>  
+        <div *ngIf="Title.invalid && (Title.dirty || Title.touched)" class="alert alert-danger">  
+          <div *ngIf="Title.errors!.required">  
+            Title is required.  
+          </div>  
+        </div>  
+        <div class="form-group">  
+          <label class="col-md-4">First Name </label>  
+          <input ngModel name = "FirstName" class="form-control" #FirstName="ngModel" required/>
+        </div>  
+        <div *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)" class="alert alert-danger">  
+          <div *ngIf="FirstName.errors!.required">  
+            First Name is required.  
+          </div>  
+        </div>
+        <div class="form-group">  
+            <label class="col-md-4">Last Name </label>  
+            <input ngModel name = "LastName" class="form-control" #LastName="ngModel" required/>
+          </div>  
+          <div *ngIf="LastName.invalid && (LastName.dirty || LastName.touched)" class="alert alert-danger">  
+            <div *ngIf="LastName.errors!.required">  
+              Last Name is required.  
+            </div>  
+          </div>  
+        <div class="form-group">  
+          <label class="col-md-4">Email</label>  
+          <input ngModel name = "Email" class="form-control" #Email="ngModel" required [pattern]="emailPattern"/>  
+        </div>  
+        <div *ngIf="Email.invalid && (Email.dirty || Email.touched)" class="alert alert-danger">  
+          <div *ngIf="Email.errors!.required" >  
+            Email is required.  
+          </div>
+          <div *ngIf="Email.errors!.pattern" >  
+            Email must be a valid email address.  
+          </div>  
+        </div>  
+        <div class="form-group">  
+            <label class="col-md-4">Password</label>  
+            <input type="password" ngModel name= "Password" class="form-control" #Password="ngModel" required minlength="6"/>  
+          </div>  
+          <div *ngIf="Password.invalid && (Password.dirty || Password.touched)" class="alert alert-danger">  
+            <div *ngIf="Password.errors!.required">  
+              Password is required.  
+            </div>
+            <div *ngIf="Password.errors!.minlength">  
+                Password must be 6 letters.  
+              </div>  
+          </div>  
+          <div class="form-group">  
+            <label class="col-md-4">Confirm Password</label>  
+            <input type="password" ngModel name = "ConfirmPassword" class="form-control" #ConfirmPassword="ngModel" required minlength="6"  />  
+          </div>  
+          <div *ngIf="ConfirmPassword.invalid && (ConfirmPassword.dirty || ConfirmPassword.touched)" class="alert alert-danger">  
+            <div *ngIf="ConfirmPassword.errors!.required">  
+              Confirm password is required.  
+            </div>
+            <div *ngIf="ConfirmPassword.errors!.minlength">  
+                Password must be 6 letters.  
+              </div>
+            <div *ngIf="ConfirmPassword.errors!.mustMatch">  
+                Password must be matched.  
+              </div>
+          </div>  
+          <div class="form-group">  
+            <label class="col-md-4">
+                <input type="checkbox" [(ngModel)] = "TermsCondition" class="form-controlt" formControlName="TermsCondition" value="">Accept Terms & Conditions
+            </label> 
+          </div>
+          <div *ngIf="angForm.controls['TermsCondition'].invalid && (angForm.controls['TermsCondition'].dirty || angForm.controls['TermsCondition'].touched)" class="alert alert-danger">  
+            <div *ngIf="angForm.controls['TermsCondition'].errors!.required">  
+              Terms and condition is required.  
+            </div>
+              
+          </div>    
+        <div class="form-group">  
+          <button type="submit" class="btn btn-primary"  
+          >  
+            Submit  
+          </button> 
+          <button type="submit" class="btn btn-primary">  
+            Cancel  
+          </button>  
+        </div>  
+      </form>  
+    </div>  
+  </div>  
